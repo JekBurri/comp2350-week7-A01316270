@@ -125,6 +125,6 @@ async function getAllReviewsByRestId(restId) { // TODO
 
 
 
-module.exports = { getAllUsers, addUser, deleteUser, getAllReviewsByRestId, getRestaurantByReviewId }
+module.exports = { getAllUsers, addUser, deleteUser, getAllReviewsByRestId, getRestaurantById }
 
 
