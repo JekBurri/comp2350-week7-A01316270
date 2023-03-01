@@ -87,6 +87,21 @@ async function addUser(postData) {
 	}
 }
 
+async function addRestaurant(name, desc) {
+
+   let sqlAddRestaurant = `
+   INSERT INTO restaurant (name, description) values (?, ?);
+   `
+	try {
+		await database.query(sqlAddRestaurant, [name], [desc]);
+		return false;
+	}
+	catch (err) {
+		console.log(err);
+		return false;
+	}
+}
+
 async function deleteRestaurant(id) {
 	let sqlDeleteUser = `
    DELETE FROM restaurant 
@@ -149,6 +164,6 @@ async function getAllReviewsByRestId(restId) {
 
 
 
-module.exports = { getAllUsers, addUser, deleteRestaurant, deleteReview, getAllReviewsByRestId, getRestaurantById }
+module.exports = { getAllUsers, addUser, deleteRestaurant, addRestaurant, deleteReview, getAllReviewsByRestId, getRestaurantById }
 
 

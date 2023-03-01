@@ -48,6 +48,34 @@
 						</table>
 						</div>
 					<% } %>
+
+					<form action="addRestaurant" method="post">
+						<div class="field is-horizontal">
+							<div class="field-label is-normal">
+								<label class="label">Add New Restaurant</label>
+							</div>
+							<div class="field-body">
+								<div class="field">
+									<p class="control is-expanded">
+										<input name="restaurant_name" class="input" type="text" placeholder="Restaurant Name">
+									</p>
+								</div>
+								<div class="field">
+									<p class="control is-expanded">
+										<input name="description" class="input" type="text" placeholder="Description">
+									</p>
+								</div>
+								<div class="field">
+									<button class="button is-link">
+										<span>Add</span>
+										<span class="icon is-small">
+											<i class="fas fa-user-plus"></i>
+										</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</section>

@@ -54,4 +54,15 @@ router.get('/deleteReview', async (req, res) => {
 	res.redirect('/');
 });
 
+router.post('/addRestaurant', async (req, res) => {
+	const rName = req.body.restaurant_name;
+	const rDesc = req.body.description;
+	try {
+		await dbModel.addRestaurant(rName, rDesc);
+	} catch (error) {
+		console.log(err);
+	}
+	res.redirect('/');
+});
+
 module.exports = router;
