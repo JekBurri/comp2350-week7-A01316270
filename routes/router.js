@@ -19,11 +19,16 @@ router.get('/', async (req, res) => {
 	}
 });
 
-router.get('/review/:restaurantId', (req, res) => {
+router.get('/review/:restaurantId', async (req, res) => {
 	// implement the getReviewsFromRestId()
-	const restaurant = dbModel.getAllReviewsByRestId(req.params.restaurantId);
-	console.log("RESTAURANT:" + restaurant)
-	res.render('reviews', {review: restaurant});
+	try {
+		const restaurant = await dbModel.getAllReviewsByRestId(req.params.restaurantId);
+		console.log("RESTAURANT:" + restaurant)
+		res.render('reviews', {review: restaurant});
+	} catch (error) {
+		res.render('error', {message: 'Error reading from MySQL'});
+		console.log("Error reading from mysql");
+	}
 })
 
 module.exports = router;

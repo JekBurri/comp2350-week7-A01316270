@@ -14,8 +14,8 @@
 					</div>
                     <% for(r of review) { %>
                         <div>
-                            <h3><%= review.restaurantName %></h3>
-                            <p><%= review.restaurantDescription %></p>
+                            <h3><%= r.reviewer_name %></h3>
+                            <p><%= r.details %></p>
                         </div>
                     <% } %>
 					
