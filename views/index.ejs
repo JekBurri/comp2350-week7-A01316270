@@ -17,25 +17,27 @@
 						<table class="table is-bordered is-hoverable is-striped is-narrow">
 							<thead>
 							<tr>
-								<th> # </th>
 								<th> Restaurant ID </th>
 								<th> Restaurant Name </th>
 								<th> Restaurant Description </th>
+								<th> Delete Restaurant </th>
 								<th> &nbsp; </th>
 							</tr>
 							</thead>
 							<% let i=0; %>
 							<% for(i=0; i < allUsers.length; i++) { %>
-							<tr>
-								<td><%= allUsers[i].restaurant_id %></td>
-								<td><%= allUsers[i].name %></td>
-								<td><%= allUsers[i].description %></td>
-								<td><a href="/deleteUser?id=<%= allUsers[i].restaurant_id %>">
-									<span class="icon is-small">
-										<i class="fas fa-user-times"></i>
-									</span></a>
-								</td>
-							</tr>
+								<a href="/review/<%= allUsers[i].restaurant_id %>">
+									<tr>
+										<td><%= allUsers[i].restaurant_id %></td>
+										<td><%= allUsers[i].name %></td>
+										<td><%= allUsers[i].description %></td>
+										<td><a href="/deleteUser?id=<%= allUsers[i].restaurant_id %>">
+											<span class="icon is-small">
+												<i class="fas fa-user-times"></i>
+											</span></a>
+										</td>
+									</tr>
+								</a>
 							<% } %>
 							<tfoot>
 								<tr> <td colspan="4">
