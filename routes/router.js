@@ -58,11 +58,19 @@ router.post('/addRestaurant', async (req, res) => {
 	const rName = req.body.restaurant_name;
 	const rDesc = req.body.description;
 	try {
-		await dbModel.addRestaurant(rName, rDesc);
+		success = await dbModel.addRestaurant(rName, rDesc);
+		console.log(success);
+		if(success) {
+			res.redirect('/');
+		} else {
+			res.render('error', { message: "Error writing to MySQL" });
+			console.log("Error writing to MySQL");
+		}
 	} catch (error) {
+		res.render('error', { message: "Error writing to MySQL" });
+		console.log("Error writing to MySQL");
 		console.log(err);
 	}
-	res.redirect('/');
 });
 
 module.exports = router;
