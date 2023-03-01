@@ -21,8 +21,7 @@ async function getAllUsers() {
 
 async function getRestaurantById(id) {
 	let sqlQuery = `
-		SELECT restaurant_id, name, description
-		FROM restaurant WHERE restaurant_id = ${id};
+	select name from restaurant where restaurant_id = ${id};
 	`;
 
 	try {
@@ -126,6 +125,6 @@ async function getAllReviewsByRestId(restId) { // TODO
 
 
 
-module.exports = { getAllUsers, addUser, deleteUser, getAllReviewsByRestId, getRestaurantById }
+module.exports = { getAllUsers, addUser, deleteUser, getAllReviewsByRestId, getRestaurantByReviewId }
 
 
