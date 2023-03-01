@@ -19,6 +19,24 @@ async function getAllUsers() {
 	}
 }
 
+async function getRestaurantById(id) {
+	let sqlQuery = `
+		SELECT restaurant_id, name, description
+		FROM restaurant WHERE restaurant_id = ${id};
+	`;
+
+	try {
+		const results = await database.query(sqlQuery);
+		console.log(results[0]);
+		return results[0];
+	}
+	catch (err) {
+		console.log("Error selecting from restaurant table");
+		console.log(err);
+		return null;
+	}
+}
+
 async function getAllReviews() {
 	let sqlQuery = `
 		SELECT review_id, restaurant_id, reviewer_name, details, rating
@@ -108,6 +126,6 @@ async function getAllReviewsByRestId(restId) { // TODO
 
 
 
-module.exports = { getAllUsers, addUser, deleteUser, getAllReviewsByRestId }
+module.exports = { getAllUsers, addUser, deleteUser, getAllReviewsByRestId, getRestaurantById }
 
 

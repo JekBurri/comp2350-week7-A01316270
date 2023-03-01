@@ -9,20 +9,43 @@
 		<section class="section">
 			<div class="maincolumns columns is-desktop is-vcentered">
 				<div class="column is-10 is-offset-1 notification is-info is-light box container">
-					<div class="title">
-						Review
-					</div>
-                    <h1><a href="/">go back to Restaurants</a></h1>
-                    <% for(r of review) { %>
-                        <div>
-                            <h3>Reviewer: <%= r.reviewer_name %> Rating: <%= r.rating %>/5</h3>
-                            <p><%= r.details %></p>
-                            
-                        </div>
-                    <% } %>
+                    <div class="title">
+                        Reviews for <%= restaurantName %>
+                    </div>
+                    <div class="table-container">
+                    <table class="table is-bordered is-hoverable is-striped is-narrow">
+                        <thead>
+                        <tr>
+                            <th> Review </th>
+                            <th> By </th>
+                            <th> Rating </th>
+                            <th> &nbsp; </th>
+                        </tr>
+                        </thead>
+                        <% for(r of review) { %>
+                            <tr>
+                                <td><%= r.details %></td>
+                                <td><%= r.reviewer_name %></td>
+                                <td><%= r.rating %></td>
+                                <td><a href="/deleteReview?id=<%= r.review_id %>">
+                                    <span class="icon is-small">
+                                        <i class="fas fa-user-times"></i>
+                                    </span></a>
+                                </td>
+                            </tr>
+                        <% } %>
+                        <tfoot>
+                            <tr> <td colspan="4">
+                            There are <%= i %> ratings.
+                            </td> </tr>
+                        </tfoot>
+                    </table>
+                    </div>
 					
 				</div>
 			</div>
 		</section>
 	</body>
 </html>
+
+
