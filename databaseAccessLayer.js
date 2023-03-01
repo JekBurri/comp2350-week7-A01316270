@@ -91,14 +91,23 @@ async function deleteRestaurant(id) {
 	let sqlDeleteUser = `
    DELETE FROM restaurant 
    WHERE restaurant_id = ?;
+   `;
 
+   let sqlDeleteReview = `
    DELETE FROM review
    WHERE restaurant_id = ?;
-   `;
+   `
 	
 	try {
-		await database.query(sqlDeleteUser, [id], [id]);
-		return true;
+		await database.query(sqlDeleteReview, [id]);
+		try {
+			await database.query(sqlDeleteUser, [id]);
+			return true;
+		}
+		catch(err) {
+			console.log(err);
+			return false;
+		}
 	}
 	catch (err) {
 		console.log(err);
