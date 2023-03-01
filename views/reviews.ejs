@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="bulma.min.css">
+		<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"> </script>
+	</head>
+	<body>
+		<section class="section">
+			<div class="maincolumns columns is-desktop is-vcentered">
+				<div class="column is-10 is-offset-1 notification is-info is-light box container">
+					<div class="title">
+						Review | <%= review.rname  %>
+					</div>
+                    <% for(review of reviews) { %>
+                        <div>
+                            <h3><%= review.restaurantName %></h3>
+                            <p><%= review.restaurantDescription %></p>
+                        </div>
+                    <% } %>
+					
+				</div>
+			</div>
+		</section>
+	</body>
+</html>

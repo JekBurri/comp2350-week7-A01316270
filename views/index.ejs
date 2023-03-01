@@ -10,7 +10,7 @@
 			<div class="maincolumns columns is-desktop is-vcentered">
 				<div class="column is-10 is-offset-1 notification is-info is-light box container">
 					<div class="title">
-						Web Users
+						Restaurants
 					</div>
 					<% if (locals.allUsers) { %>
 						<div class="table-container">
@@ -18,9 +18,9 @@
 							<thead>
 							<tr>
 								<th> # </th>
-								<th> Firstname </th>
-								<th> Lastname </th>
-								<th> Email </th>
+								<th> Restaurant ID </th>
+								<th> Restaurant Name </th>
+								<th> Restaurant Description </th>
 								<th> &nbsp; </th>
 							</tr>
 							</thead>
@@ -39,7 +39,7 @@
 							<% } %>
 							<tfoot>
 								<tr> <td colspan="4">
-								There are <%= i %> users.
+								There are <%= i %> restaurants.
 								</td> </tr>
 							</tfoot>
 						</table>

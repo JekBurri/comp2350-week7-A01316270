@@ -90,8 +90,24 @@ async function deleteUser(webUserId) {
 	}
 }
 
+async function getAllReviewsByRestId(restId) { // TODO
+	let sqlQuery = `
+		select * from review where restaurant_id = ${restId};
+	`;
+	try {
+		const results = await database.query(sqlQuery);
+		console.log(results[0]);
+		return results[0];
+	}
+	catch (err) {
+		console.log("Error selecting from review table");
+		console.log(err);
+		return null;
+	}
+}
 
 
-module.exports = { getAllUsers, addUser, deleteUser }
+
+module.exports = { getAllUsers, addUser, deleteUser, getAllReviewsByRestId }
 
 

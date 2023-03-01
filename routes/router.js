@@ -19,4 +19,14 @@ router.get('/', async (req, res) => {
 	}
 });
 
+router.get('/review/:restaurantId', (req, res) => {
+	// implement the getReviewsFromRestId()
+	const restaurant = dbModel.getAllReviewsByRestId(req.params.restaurantId);
+	res.render('reviews', {review: {
+		restaurantId: req.params.restaurantId,
+		restaurantName: restaurant.reviewer_name,
+		restaurantDescription: restaurant.details
+	}})
+})
+
 module.exports = router;
