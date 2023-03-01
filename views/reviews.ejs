@@ -10,10 +10,14 @@
 			<div class="maincolumns columns is-desktop is-vcentered">
 				<div class="column is-10 is-offset-1 notification is-info is-light box container">
 					<div class="title">
-						Review | <%= review.rname  %>
+						Review
 					</div>
-                    <p><%=JSON.stringify(review)%></p>
-                    
+                    <% for(r of review) { %>
+                        <div>
+                            <h3><%= review.restaurantName %></h3>
+                            <p><%= review.restaurantDescription %></p>
+                        </div>
+                    <% } %>
 					
 				</div>
 			</div>

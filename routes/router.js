@@ -22,6 +22,7 @@ router.get('/', async (req, res) => {
 router.get('/review/:restaurantId', (req, res) => {
 	// implement the getReviewsFromRestId()
 	const restaurant = dbModel.getAllReviewsByRestId(req.params.restaurantId);
+	console.log("RESTAURANT:" + restaurant)
 	res.render('reviews', {review: restaurant});
 })
 
