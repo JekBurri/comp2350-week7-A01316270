@@ -21,18 +21,17 @@ async function getAllUsers() {
 
 async function getRestaurantById(id) {
 	let sqlQuery = `
-	select name from restaurant where restaurant_id = ${id};
+	  SELECT name FROM restaurant WHERE restaurant_id = ?;
 	`;
-
+  
 	try {
-		const results = await database.query(sqlQuery);
-		console.log(results[0]);
-		return results[0];
-	}
-	catch (err) {
-		console.log("Error selecting from restaurant table");
-		console.log(err);
-		return null;
+	  const results = await database.query(sqlQuery, [id]);
+	  console.log(results[0]);
+	  return results[0];
+	} catch (err) {
+	  console.log("Error selecting from restaurant table");
+	  console.log(err);
+	  return null;
 	}
 }
 
@@ -88,17 +87,30 @@ async function addUser(postData) {
 	}
 }
 
-async function deleteUser(webUserId) {
+async function deleteRestaurant(id) {
 	let sqlDeleteUser = `
-   DELETE FROM web_user 
-   WHERE web_user_id = :userID
+   DELETE FROM restaurant 
+   WHERE restaurant_id = ?;
    `;
-	let params = {
-		userID: webUserId
-	};
-	console.log(sqlDeleteUser);
+	
 	try {
-		await database.query(sqlDeleteUser, params);
+		await database.query(sqlDeleteUser, [id]);
+		return true;
+	}
+	catch (err) {
+		console.log(err);
+		return false;
+	}
+}
+
+async function deleteReview(id) {
+	let sqlDeleteUser = `
+   DELETE FROM review 
+   WHERE review_id = ?;
+   `;
+	
+	try {
+		await database.query(sqlDeleteUser, [id]);
 		return true;
 	}
 	catch (err) {
@@ -125,6 +137,6 @@ async function getAllReviewsByRestId(restId) { // TODO
 
 
 
-module.exports = { getAllUsers, addUser, deleteUser, getAllReviewsByRestId, getRestaurantById }
+module.exports = { getAllUsers, addUser, deleteRestaurant, deleteReview, getAllReviewsByRestId, getRestaurantById }
 
 

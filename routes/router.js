@@ -34,4 +34,24 @@ router.get('/review/:restaurantId', async (req, res) => {
 	}
 })
 
+router.get('/deleteRestaurant', async (req, res) => {
+	const id = req.query.id;
+	try {
+		await dbModel.deleteRestaurant(id);
+	} catch (error) {
+		console.log(err);
+	}
+	res.redirect('/');
+});
+
+router.get('/deleteReview', async (req, res) => {
+	const id = req.query.id;
+	try {
+		await dbModel.deleteReview(id);
+	} catch (error) {
+		console.log(err);
+	}
+	res.redirect('/');
+});
+
 module.exports = router;
