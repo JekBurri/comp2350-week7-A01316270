@@ -91,10 +91,13 @@ async function deleteRestaurant(id) {
 	let sqlDeleteUser = `
    DELETE FROM restaurant 
    WHERE restaurant_id = ?;
+
+   DELETE FROM review
+   WHERE restaurant_id = ?;
    `;
 	
 	try {
-		await database.query(sqlDeleteUser, [id]);
+		await database.query(sqlDeleteUser, [id], [id]);
 		return true;
 	}
 	catch (err) {
@@ -119,19 +122,19 @@ async function deleteReview(id) {
 	}
 }
 
-async function getAllReviewsByRestId(restId) { // TODO
+async function getAllReviewsByRestId(restId) {
 	let sqlQuery = `
-		select * from review where restaurant_id = ${restId};
+	  SELECT * FROM review WHERE restaurant_id = ?;
 	`;
 	try {
-		const results = await database.query(sqlQuery);
-		console.log(results[0]);
-		return results[0];
+	  const results = await database.query(sqlQuery, [restId]);
+	  console.log(results[0]);
+	  return results[0];
 	}
 	catch (err) {
-		console.log("Error selecting from review table");
-		console.log(err);
-		return null;
+	  console.log("Error selecting from review table");
+	  console.log(err);
+	  return null;
 	}
 }
 
