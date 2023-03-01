@@ -28,7 +28,7 @@
 							<% for(i=0; i < allUsers.length; i++) { %>
 								<tr>
 									<td><%= allUsers[i].restaurant_id %></td>
-									<td><a href="/review/<%= allUsers[i].restaurant_id %>"><%= allUsers[i].name %></a></td>
+									<td><%= allUsers[i].name %><a href="/review/<%= allUsers[i].restaurant_id %>"></a><i class="fa-solid fa-star"></i></a></td>
 									<td><%= allUsers[i].description %></td>
 									<td><a href="/deleteUser?id=<%= allUsers[i].restaurant_id %>">
 										<span class="icon is-small">
