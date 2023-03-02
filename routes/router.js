@@ -19,13 +19,13 @@ router.get('/', async (req, res) => {
 	}
 });
 
-router.get('/review/:restaurantId', async (req, res) => {
+router.get('/showReviews?restaurantId', async (req, res) => {
 	// implement the getReviewsFromRestId()
 	try {
-		const chosenRestaurant = await dbModel.getRestaurantById(req.params.restaurantId);
+		const chosenRestaurant = await dbModel.getRestaurantById(req.query.restaurantId);
 		const restaurantName = chosenRestaurant.name;
 		console.log("Chosen Restaurant: " + chosenRestaurant);
-		const restaurant = await dbModel.getAllReviewsByRestId(req.params.restaurantId);
+		const restaurant = await dbModel.getAllReviewsByRestId(req.query.restaurantId);
 		console.log("RESTAURANT:" + restaurant)
 		res.render('reviews', {review: restaurant, restaurantName});
 	} catch (error) {
