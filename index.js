@@ -37,9 +37,9 @@ const success = printMySQLVersion();
 const app = express();
 app.set('view engine', 'ejs');
 
+app.use(express.urlencoded({extended: false}));
 app.use('/',router);
 app.use(express.static(__dirname + "/public"));
-app.use(express.urlencoded({extended: false}));
 
 app.listen(port, () => {
 	console.log("Node application listening on port "+port);
